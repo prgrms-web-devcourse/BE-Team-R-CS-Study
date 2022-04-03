@@ -6,7 +6,7 @@
 
 ### Array
 
-<img src = "https://user-images.githubusercontent.com/50768959/161098465-958ab248-929e-4d8f-a96d-37f86d53037f.png" width="700">
+<img src = "https://user-images.githubusercontent.com/50768959/161384955-7502c3be-ed93-4d52-8271-ae64d2f04938.jpg" width="700">
 
 - Index로 접근 가능함
 - 삭제,삽입 시 shift 발생
@@ -17,7 +17,7 @@
 
 ### Array List
 
-<img src = "https://user-images.githubusercontent.com/50768959/161098528-8ea1f8f8-fa04-42b7-b672-f95a5a90dd02.png" width="700">
+<img src = "https://user-images.githubusercontent.com/50768959/161384955-7502c3be-ed93-4d52-8271-ae64d2f04938.jpg" width="700">
 
 - Index로 접근 가능함
 - 삭제,삽입 시 shift 발생
@@ -28,7 +28,7 @@
 
 ### Linked List
 
-<img src = "https://user-images.githubusercontent.com/50768959/161098583-66db65a3-7de1-4714-8d63-2cd3cd81eb8f.png" width="700">
+<img src = "https://user-images.githubusercontent.com/50768959/161384903-c213b821-3e49-4dca-93a6-bdd8f14ebe2a.jpg" width="700">
 
 - Index로 접근 불가능
 - 탐색이 비교적 느리지만, 삭제, 삽입 시 shift 발생하지 않음
