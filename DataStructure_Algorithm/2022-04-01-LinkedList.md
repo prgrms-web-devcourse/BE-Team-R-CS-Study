@@ -8,21 +8,19 @@ Array의 삭제, 삽입의 시간 복잡도 한계를 해결하기 위한 선형
 
 따라서 **논리적 저장순서와 물리적 저장 순서가 일치하지 않는다.**
 
-<img src = "https://user-images.githubusercontent.com/50768959/161087245-ea4dba1b-0e75-46f8-8925-36f8a53c3a6e.png" width="700">
-
 
 ## Linked List 종류
 
 1. Singly Linked List (단일 연결 리스트)
     - 단일 연결 리스트는 위에서 설명한 가장 기본적인 연결 리스트이다.
     - 각 노드들은 데이터 값과 다음 노드에 대한 참조만을 가지고 있다.
-    <img src = "https://user-images.githubusercontent.com/50768959/161087631-1968bdbb-0e2e-4db8-baf6-f48b50c1ef6b.png" width="700">
+    <img src = "https://user-images.githubusercontent.com/50768959/161384901-865c4b9b-6460-4a4d-a5e9-83e27ae35892.jpg" width="700">
     
 2. Doubly Linked List (이중 연결 리스트)
     - 이중 연결 리스트는 단일 연결 리스트와 노드들이 가지고 있는 데이터가 다르다.
     - 각 노드들은 데이터 값과 이전 노드에 대한 참조, 다음 노드에 대한 참조를 가지고 있다.
     - 따라서, 단일 연결 리스트는 다음 노드에만 접근할 수 있지만, 이중 연결 리스트는 이전 노드와 다음 노드 모두에 접근할 수 있다.
-    <img src = "https://user-images.githubusercontent.com/50768959/161087769-ebf99819-9429-4b9c-90e5-708fb65e0857.png" width="700">
+    <img src = "https://user-images.githubusercontent.com/50768959/161384903-c213b821-3e49-4dca-93a6-bdd8f14ebe2a.jpg" width="700">
 
     
 
