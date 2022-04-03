@@ -4,7 +4,7 @@
 
 Java에서 Array List는 List 인터페이스의 구현 클래스이다.
 
-<img src = "https://user-images.githubusercontent.com/50768959/161094231-d7028fd1-e775-497f-8a5b-e98b4f24601d.png" width="500">
+<img src = "https://user-images.githubusercontent.com/50768959/161384499-b1dcf5ee-ccc4-4945-b3c6-7ac4c254d8e6.jpg" width="500">
 
 ### Java의 ArrayList 특징
 
