@@ -69,17 +69,17 @@ stop the world가 실행되면 mark and sweep이라는 알고리즘이 작동하
 
 ### Mark and Sweep, Compact
 
-![mark.png](images/mark.png)
+![mark.png](./images/mark.png)
 
 Mark는 GC 루트로부터 모든 변수를 스캔하면서 각각 어떤 객체를 참조하고 있는지 찾아서 마킹하는 과정입니다. 즉, 위에서 설명한 Reachable Objects와 Unreachable Objects를 식별하는 과정입니다. 
 
-![sweep.png](images/sweep.png)
+![sweep.png](images/sweep.PNG)
 
 Sweep은 Unreachable Objects를 heap에서 제거하는 과정입니다.
 
 그리고 알고리즘에 따라서 Compact 과정이 추가되기도 합니다.
 
-![compact.png](images/compact.png)
+![compact.png](images/compact.PNG)
 
 Compact는 Sweep 후 heap 영역에 듬성듬성 분산되어 남아 있는 객체들을 한곳에 모아 메모리 단편화를 막아주는 작업입니다.
 
@@ -104,23 +104,23 @@ Old Generation은 Young Generation에서 오랫동안 살아남은 객체들이 
 
 GC는 Minor GC와 Major GC로 구분되는데요, 우선 Minor GC부터 알아보겠습니다.
 
-![eden.png](images/eden.png)
+![eden.png](images/eden.PNG)
 
 새로운 객체가 Eden 영역에 할당이 됩니다. 그림과 같이 만약 더 이상 할당될 공간이 없다면 이때 Minor GC가 일어나게 되고 이때 Mark and Sweep이 발생하게 됩니다.
 
-![minorgc.png](images/minorgc.png)
+![minorgc.png](images/minorgc.PNG)
 
  위 그림과 같이 Minor GC에서 살아남은 객체(파란색 박스)들은 Survivor 영역으로 이동합니다.살아남지 못한 객체(하얀색 박스)들은 Sweep 과정을 통해 Eden 영역에서 삭제됩니다.
 
-![minorgc2.png](images/minorgc2.png)
+![minorgc2.png](images/minorgc2.PNG)
  그 후 Survivor 영역에 있는 살아남은 객체들은 age값이 1씩 증가됩니다.
 
  다시 Eden 영역이 꽉 차고 Minor GC가 발생되다보면 Survivor 영역에 있는 객체의 age 값이 점점 증가하게 되겠죠?
 
-![majorgc.png](images/majorgc.png)
+![majorgc.png](images/majorgc.PNG)
  이렇게 age값이 증가하다가 객체의 age가 age threshold(임계점)에 도달하면 Old Generation으로 이동하게 됩니다.
 
-![majorgc2.png](images/majorgc2.png)
+![majorgc2.png](images/majorgc2.PNG)
 이와 같은 과정을 반복하게 되어 Old generation이 꽉 차게 되면 Major GC가 발생하게 됩니다.
 
 ## Major GC와 Minor GC로 나뉘어진 이유
