@@ -141,7 +141,42 @@ public class MyQueue<T>{
 
 <br>
 
-- Stack 두 개로 Queue 구현하기
+
+## 3. 원형큐
+
+### (1) 배열을 사용한 Queue의 단점
+
+배열을 사용한 Queue의 경우, 배열의 가장 앞에 있는 데이터를 꺼낸 후, 그 다음 인덱스의 데이터들을 한 칸씩 모두 이동해야 하는 단점이 있다.
+
+따라서, 데이터 하나를 꺼낼 때 마다, O(n)만큼의 시간 복잡도를 요구하므로 비효율적이다.
+
+### (2) 배열 Queue의 단점을 보완한 원형 큐
+
+원형 큐는 다음 그림처럼 front는 첫번째 데이터를 가리키고 rear은 마지막 데이터를 가리키는 형태를 가지고 있다. 이 때문에, 기존의 배열 큐처럼 데이터를 매번 한 칸씩 이동시킬 필요가 없어서 데이터를 빠르게 처리할 수 있다.
+
+<img src = "https://user-images.githubusercontent.com/50768959/167579721-fd867745-1add-4f0b-8806-7d00d73e61a5.png" width="250">
+
+원형 큐에 최초로 데이터를 추가한 후의 모습은 다음과 같다.
+
+<img src = "https://user-images.githubusercontent.com/50768959/167579910-e1e65515-d392-431e-9fa0-94b5caf42d21.png" width="250">
+
+다음과 같은 원형 큐에서 데이터를 삭제해보자.
+
+<img src = "https://user-images.githubusercontent.com/50768959/167580099-faeb3f20-10f0-460c-a3a3-d535e85deb16.png" width="300">
+
+front에 있는 어피치를 삭제하면 frotn가 그 다음 데이터인 프로도를 가리키게 된다. 그리도 데이터들의 이동은 나타나지 않는다.
+
+<img src = "https://user-images.githubusercontent.com/50768959/167580155-60892f88-73ef-42bc-8d36-2b57f9848493.png" width="300">
+
+원형 큐에서 데이터가 최대로 저장된 경우는 다음과 같다.
+
+<img src = "https://user-images.githubusercontent.com/50768959/167580231-1175d9de-de11-4225-9025-055248b75b8a.png" width="300">
+
+데이터가 꽉 찬 경우는 위처럼 front와 rear의 인덱스 차이가 한 칸 만큼 날 때이다. 
+
+front와 rear이 같은 경우는 큐가 빈 경우인데, 꽉 찬 경우도 front와 rear이 같도록 만들면 큐가 빈 경우와 구분할 수 없기 때문에 위처럼 구현한다.
+
+## 4. Stack 두 개로 Queue 구현하기
 
 ```java
 class MyQueue<T>{
