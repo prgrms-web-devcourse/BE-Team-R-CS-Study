@@ -8,7 +8,7 @@
 
 1. `Connectionless` (비연결성)
 - 클라이언트가 서버에 요청(Request)을 했을 때, 그 요청에 맞는 응답(Response)을 보낸 후 연결을 끊는 처리방식
-1. `Stateless` (무상태)
+2. `Stateless` (무상태)
 - 클라이언트의 상태 정보를 가지지 않는 서버 처리 방식
 - 클라이언트와 첫번째 통신에서 데이터를 주고 받았다 해도, 두번째 통신에서 이전 데이터를 유지하지 않는다.
 
@@ -18,7 +18,8 @@
 ### 2. 쿠키란?
 
 <aside>
-💡 쿠키는 **서버**가 **사용자의 웹 브라우저**에 전송하는 작은 데이터 조각이다.
+  
+💡 쿠키는 ***서버***가 ***사용자의 웹 브라우저***에 전송하는 작은 데이터 조각이다.
 
 </aside>
 
@@ -28,9 +29,9 @@
 
 1. 세션 관리 (Session Management)
 - 로그인, 사용자 닉네임, 접속 시간, 장바구니 등의 서버가 알아야할 정보들을 저장
-1. 개인화 (Personalization)
+2. 개인화 (Personalization)
 - 사용자마다 다르게 그 사람에 적절한 페이지를 보여줄 수 있다.
-1. 트래킹 (Tracking)
+3. 트래킹 (Tracking)
 - 사용자의 행동과 패턴을 분석하고 기록한다.
 - ex) 최근 검색한 상품들을 광고에서 추천할 수 있다.
 
@@ -59,28 +60,31 @@ Host: www.example.org
 
 크롬 개발자 도구에서 쿠키를 볼 수 있으며 쿠키는 Name = Value 쌍으로 이루어져있고 여러 가지 속성에 대해서 살펴보겠다.
 
+<img width="985" alt="Pasted Graphic" src="https://user-images.githubusercontent.com/72663337/175021595-6366bcca-afd5-41b0-8ad6-517c456541a7.png">
+
+
 1. path
 - 쿠키를 전송할 요청 경로
 - url값으로 이 경로 혹은 하위의 경로에서만 쿠키에 접근할 수 있다.
 - Example
   - path=/cat으로 설정하면 /cat, /cat/1, /cat/1/age에서 쿠키에 접근할 수 있다.
-1. domain
+2. domain
 - 쿠키를 전송할 도메인
 - 쿠키에 접근 가능한 도메인을 설정
 - Example
   - domain=google.com 설정
   - *.google.com과 같은 서브도메인에서도 쿠키에 접근할 수 있다.
-1. expires와 max-age
+3. expires와 max-age
 - 쿠키의 기한 (만료 시점)을 설정
 - expires 혹은 max-age가 설정되어 있지 않으면 브라우저를 닫을때 쿠키가 삭제되며 이를 “세션 쿠키”라고 한다.
 - 설정한 기한이 되면 쿠키가 삭제
-1. secure
+4. secure
 - Secure는 HTTPS 프로토콜 상에서 암호화된 요청일 경우에만 전송된다.
-1. httpOnly
+5. httpOnly
 - 클라이언트에서 document.cookie를 활용해 쿠키를 조작할 수 없도록 한다.
 - XSS 공격을 방지하기 위해 사용된다.
 - 예를 들어, 서버쪽에서 지속되고 있는 세션의 쿠키는 JavaScript를 사용할 필요성이 없기 때문에 HttpOnly 플래그가 설정될 것이다.
-1. samesite
+6. samesite
 - CSRF(크로스 사이트 요청 위조)라 불리는 공격을 막기위해서 사용한다.
   - 즉, 사이트 외부에서의 쿠키에 대한 접근을 막는다.
 - SameSite를 선언했을 경우 쿠키가 cross-site 요청시에 전송하지 않아 CSRF에 대해 방어할 수 있다.
@@ -167,9 +171,9 @@ example.com 사이트 접속
 1. 서버 부하
 - 세션 저장소가 필수적으로 존재하기 때문에 이를 사용하기 위한 비용이 든다.
 - 서버에서 클라이언트의 상태를 모두 유지하고 있어야 하므로, 클라이언트 수에 따른 메모리나 디스크 또는 DB에 부하가 심하다.
-1. 확장성 (Scale out이 어렵다)
+2. 확장성 (Scale out이 어렵다)
 - stateful 하기 때문에 http의 장점을 발휘하지 못하고 scale out에 걸림돌이 생긴다.
-1. CORS
+3. CORS
 - 웹 브라우저에서 세션 관리에 사용하는 쿠키는 단일 도메인 및 서브 도메인에서만 작동하도록 설계되어 CORS 방식 (여러 도메인에 request를 보내는 브라우저)을 사용할 때 쿠키 및 세션 관리가 어렵다.
 
 > CORS (Cross-Origin Resource Sharing, 교차 출처 리소스 공유)
@@ -180,7 +184,7 @@ HTTP 헤더를 사용하여, 한 출처에서 실행 중인 웹 애플리케이�
 
 토큰 기반 인증 시스템은 인증받은 사용자들에게 토큰을 발급하고, 서버에 요청을 할 때 헤더에 토큰을 함께 보내도록 하여 유효성 검사를 한다. 이러한 시스템에서는 더이상 사용자의 인증 정보를 서버나 세션에 유지하지 않고 클라이언트 측에서 들어오는 요청만으로 작업을 처리한다.
 
-즉, 서버 기반의 인증 시스템과 달리 상태를 유지하지 않으므로 stateless한 구조를 갖는다.
+즉, 서버 기반의 인증 시스템과 달리 상태를 유지하지 않으므로 **stateless**한 구조를 갖는다.
 
 ![토큰 기반 인증](https://camo.githubusercontent.com/2fe1b886df7b6ae69e30d4c80d86871dafcd50ee2b02c09f41b9b1bb7270f2b0/68747470733a2f2f626c6f672e6b616b616f63646e2e6e65742f646e2f6f676f41672f62747141726979543573592f59597432776b457a35306b4b4e34376d4c775244584b2f696d672e706e67)
 
@@ -196,7 +200,7 @@ HTTP 헤더를 사용하여, 한 출처에서 실행 중인 웹 애플리케이�
 
 토큰은 클라이언트 측에 저장되기 때문에 서버는 완전히 Stateless하며, 클라이언트와 서버의 연결고리가 없기 때문에 확장하기에 매우 적합하다.
 
-1. 여러 플랫폼 및 도메인
+2. 여러 플랫폼 및 도메인
 - 서버 기반 인증 시스템의 문제점 중 하나인 CORS를 해결할 수 있다. 토큰을 사용한다면 어떤 디바이스, 어떤 도메인에서도 토큰의 유효성 검사를 진행한 후에 요청을 처리할 수 있다.
 
 최근에는 Json 포맷을 이용하는 JWT(Json Web Token)을 주로 사용한다.
@@ -204,9 +208,11 @@ HTTP 헤더를 사용하여, 한 출처에서 실행 중인 웹 애플리케이�
 ## JWT (Json Web Token)
 
 <aside>
+  
 💡 JWT이란 인증에 필요한 정보들을 Token에 담아 암호화 시킨 토큰을 의미한다.
 
 </aside>
+
 
 ![JWT](https://blog.kakaocdn.net/dn/6z8H7/btrzuZmpULk/D3ocLNCelLFFbNAeaxQ4sk/img.png)
 
@@ -225,7 +231,7 @@ JWT는 Header, Payload, Signature 3부분으로 이루어지며, Json 형태인 
 - 토큰의 타입 : “JWT”
 - 알고리즘 : “HS512”
 
-1. Payload
+2. Payload
 
 ![JWT_Payload](https://camo.githubusercontent.com/9f54e33e43b71c045ff113134708c0a098802c7a281605ddd2d78328333e238f/68747470733a2f2f7465636f626c652e74656368636f757273652e636f2e6b722f7374617469632f35326663376532316535626132376161313633346361323638333637383563652f31653761392f323032312d30352d32322d6a77742d7061796c6f61642e706e67)
 
@@ -233,7 +239,7 @@ JWT는 Header, Payload, Signature 3부분으로 이루어지며, Json 형태인 
 - payload에 민감한 정보를 담지 않는다.
     - header, payload는 json이 디코딩되어있을 뿐이지 특별한 암호화가 걸려있는 것이 아니기 때문에 누구나 jwt를 가지고 디코딩을 한다면 header나 payload에 담긴 값을 알 수 있다.
 
-1. Signature
+3. Signature
 
 ⇒ 토큰을 인코딩하거나 유효성 검증을 할 때 사용되는 고유한 암호화 코드
 
@@ -259,12 +265,21 @@ JWT는 Header, Payload, Signature 3부분으로 이루어지며, Json 형태인 
 
 1. Sliding Session
 - 특정한 서비스를 계속 사용하고 있는 특정 유저에 대해 만료 시간을 연장시켜주는 방법
-1. Refresh Token ⇒ 가장 많이 사용
+2. Refresh Token ⇒ 가장 많이 사용
 - JWT를 처음 발급할 때 Access Token과 함께 Refresh Token이라는 토큰을 발급한다.
 - 비교적 긴 시간 (7일, 30일 등)의 만료시간을 가진 Refresh Token은 Access Token을 Refresh 해주는 것을 보장하는 토큰
     - Access Token이 만료되었다면 Refresh Token으로 서버에게 새로운 Access Token을 발급받는다.
 
 ## 예상 질문
+
+### 클라이언트의 토큰이 변경되었을 때,(위조되었을 때) JWT를 사용하는 서버가 이를 알아채는 방법은?
+
+- JWT는 base64로 인코딩만 되어있을 뿐, 암호화는 되어있지 않아 토큰이 탈취되면 누구나 header, payload 데이터를 볼 수 있다. 하지만 signature를 통하여 변조는 불가능하다. 
+- signature는 header, payload를 조합하고, 서버의 비밀 키를 통하여 만들어진 값이기 때문에 이 값의 비교를 통하여 조작 여부를 알 수 있다.
+
+### OAuth와, JWT의 차이점은?
+
+- 둘다 특정 어플리케이션에 접근할 수 있는 권한을 관리하는 방식이다. 하지만 OAuth의 토큰은 대체로(어플리케이션에서의 구현에 따라 다르지만) 사용자의 정보와 같은 중요 정보를 담고있는 토큰이 아니고, 그 정보를 가리키는 포인터와 같은 역할을 한다. 반면 JWT는 확실하게 사용자 정보를 담고 있으며 이 정보의 크기로 인하여 크기가 더 커질수도 있다.
 
 ### 쿠키와 세션을 사용하는 이유
 
@@ -314,3 +329,5 @@ JWT는 Header, Payload, Signature 3부분으로 이루어지며, Json 형태인 
 [https://program-developer.tistory.com/99](https://program-developer.tistory.com/99)
 
 [https://brunch.co.kr/@jinyoungchoi95/1](https://brunch.co.kr/@jinyoungchoi95/1)
+
+https://lewis-kku.tistory.com/34
